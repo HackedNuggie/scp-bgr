@@ -15,7 +15,7 @@ class SCP:
 
     def __str__(self):
         return (f"SCP-{self.number}\n"
-                f"Site: {self.site}\n"
+                f"Contained in: {self.site}\n"
                 f"Containment Class: {self.containment_class}\n"
                 f"Disruption Class: {self.disruption_class}\n"
                 f"Risk Class: {self.risk_class}\n"
@@ -25,18 +25,18 @@ class SCP:
         url = f'https://scp-wiki.wikidot.com/scp-{num}'
         soup = BeautifulSoup(requests.get(url).content, 'html.parser')
         
-        txt = "\n".join(soup.text.splitlines()[219:])
-        """
+        txt = "\n".join(soup.text.splitlines()[215:])
+        
         with open("text.txt","w",encoding="utf-8") as f:
-            f.write(html)
-        """
+            f.write(txt)
+        
         number = num
 
         # check if there's a containment site
-        site_search = re.search(r"Site-\s*([^\n]+)", txt)
+        site_search = re.search(r'(?:contained|located|held|situated|occupies|placed)\s+(?:in|on|at|a|within|by|near|adjacent to|around)\s+(.*)', txt)
         site = site_search.group(1).strip() if site_search else None
 
-        # find class (keter, euclid, safe)
+        # find class (keter, euclid, afe)
         cont_class_search = re.search(r"(Containment Class|Object Class):\s*([^\n]+)", txt)
         cont_class = cont_class_search.group(2).strip() if cont_class_search else None
 
