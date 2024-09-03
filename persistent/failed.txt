@@ -1,0 +1,12 @@
+359: 'NoneType' object has no attribute 'text'
+809 no description
+841 no description
+877 no description
+895: 'NoneType' object is not subscriptable
+924 no description
+931 no description
+1159 no description
+1561 no description
+1631: 'NoneType' object has no attribute 'text'
+1665 no description
+1908: 'NoneType' object has no attribute 'text'

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCP-{{ scp.number }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .scp-image {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+        }
+        .scp-info {
+            margin-top: 20px;
+        }
+        .scp-info p {
+            margin: 8px 0;
+        }
+        .scp-info p span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SCP-{{ scp.number }}</h1>
+        
+        {% if scp.image %}
+            {% for img in scp.image %}
+                <img src="{{ img[0] }}" alt="SCP Image" class="scp-image">
+                <p><em>{{ img[1] }}</em></p>
+            {% endfor %}
+        {% endif %}
+        
+        <div class="scp-info">
+            <p><span>Contained in:</span> {{ scp.site }}</p>
+            <p><span>Containment Class:</span> {{ scp.containment_class }}</p>
+            <p><span>Disruption Class:</span> {{ scp.disruption_class }}</p>
+            <p><span>Risk Class:</span> {{ scp.risk_class }}</p>
+            <p><span>Description:</span> {{ scp.description }}</p>
+        </div>
+        
+    
+    </div>
+</body>
+</html>
